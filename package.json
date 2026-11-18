@@ -1,0 +1,24 @@
+{
+  "name": "auction-pro",
+  "version": "1.0.0",
+  "description": "AUCTION PRO – Real-Time Player Auction Management System",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "start": "node backend/src/server.js",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "seed": "npm run seed --prefix backend"
+  },
+  "keywords": [
+    "auction",
+    "cricket",
+    "react",
+    "nodejs",
+    "mongodb",
+    "socketio",
+    "tailwindcss"
+  ],
+  "author": "AUCTION PRO Team",
+  "license": "MIT"
+}
