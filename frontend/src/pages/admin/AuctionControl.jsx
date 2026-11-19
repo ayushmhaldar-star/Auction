@@ -23,7 +23,8 @@ import {
   Tv, 
   AlertCircle,
   Sparkles,
-  HelpCircle
+  HelpCircle,
+  Trophy
 } from 'lucide-react';
 
 const AuctionControl = () => {
@@ -579,8 +580,8 @@ const AuctionControl = () => {
 
             {!currentPlayer ? (
               <div className="py-24 text-center space-y-4">
-                <div className="w-20 h-20 rounded-2xl bg-slate-800 flex items-center justify-center text-3xl mx-auto text-slate-600">
-                  🏏
+                <div className="w-20 h-20 rounded-2xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center mx-auto text-amber-400">
+                  <Trophy className="w-10 h-10" />
                 </div>
                 <h3 className="text-xl font-bold text-white">No Player on Auction Block</h3>
                 <p className="text-xs text-slate-400 max-w-xs mx-auto">
@@ -628,33 +629,23 @@ const AuctionControl = () => {
                   </div>
                 </div>
 
-                {/* Attributes Grid */}
-                <div className="grid grid-cols-2 gap-3 py-3 border-t border-b border-slate-800 text-xs">
-                  <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-0.5">
-                    <span className="text-[10px] uppercase font-bold text-slate-500">Batting Style</span>
-                    <p className="font-bold text-white text-sm">{currentPlayer.battingStyle || 'Right-hand bat'}</p>
-                  </div>
-                  <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-0.5">
-                    <span className="text-[10px] uppercase font-bold text-slate-500">Bowling Style</span>
-                    <p className="font-bold text-white text-sm">{currentPlayer.bowlingStyle || 'Right-arm medium'}</p>
-                  </div>
-                </div>
-
-                {/* Base Price & Notes */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-xs">
-                    <span className="text-slate-400 font-bold uppercase">Opening Base Price:</span>
+                {/* Base Price & Player Description */}
+                <div className="space-y-3 pt-3 border-t border-slate-800">
+                  <div className="flex justify-between items-center p-3 rounded-xl bg-slate-950/40 border border-slate-800/60 text-xs">
+                    <span className="text-slate-400 font-bold uppercase tracking-wider">Opening Base Price:</span>
                     <span className="font-mono font-black text-emerald-400 text-base">
                       {formatCurrency(currentPlayer.basePrice)}
                     </span>
                   </div>
 
-                  {currentPlayer.description && (
-                    <div className="p-3 rounded-xl bg-slate-950/40 border border-slate-800/60 text-xs text-slate-400 leading-relaxed">
-                      <span className="text-slate-300 font-semibold">Scouting Note: </span>
-                      {currentPlayer.description}
-                    </div>
-                  )}
+                  <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-1.5">
+                    <span className="text-[10px] uppercase font-extrabold text-amber-400 tracking-wider">
+                      PLAYER DESCRIPTION
+                    </span>
+                    <p className="text-sm text-slate-200 leading-relaxed font-medium">
+                      {currentPlayer.description || 'No description provided for this player.'}
+                    </p>
+                  </div>
                 </div>
               </div>
             )}

@@ -46,8 +46,6 @@ const PlayerManagement = () => {
     name: '',
     age: 24,
     category: '',
-    battingStyle: 'Right-hand bat',
-    bowlingStyle: 'Right-arm medium',
     previousTeam: '',
     basePrice: 1000000,
     description: ''
@@ -108,8 +106,6 @@ const PlayerManagement = () => {
       name: '',
       age: 24,
       category: categories[0]?._id || '',
-      battingStyle: 'Right-hand bat',
-      bowlingStyle: 'Right-arm fast',
       previousTeam: '',
       basePrice: 1000000,
       description: ''
@@ -126,8 +122,6 @@ const PlayerManagement = () => {
       name: player.name,
       age: player.age,
       category: player.category?._id || player.category,
-      battingStyle: player.battingStyle || 'Right-hand bat',
-      bowlingStyle: player.bowlingStyle || 'Right-arm medium',
       previousTeam: player.previousTeam || '',
       basePrice: player.basePrice,
       description: player.description || ''
@@ -393,7 +387,7 @@ const PlayerManagement = () => {
                   <th className="px-4 py-3.5 text-center">Serial #</th>
                   <th className="px-4 py-3.5">Player</th>
                   <th className="px-4 py-3.5">Category</th>
-                  <th className="px-4 py-3.5">Style / Role</th>
+                  <th className="px-4 py-3.5">Description</th>
                   <th className="px-4 py-3.5 text-right">Base Price</th>
                   <th className="px-4 py-3.5 text-center">Status</th>
                   <th className="px-4 py-3.5 text-right">Actions</th>
@@ -435,10 +429,11 @@ const PlayerManagement = () => {
                       </span>
                     </td>
 
-                    {/* Style */}
-                    <td className="px-4 py-3.5 text-xs text-slate-400">
-                      <div><span className="text-slate-300">{p.battingStyle}</span></div>
-                      <div className="text-[11px] text-slate-500">{p.bowlingStyle}</div>
+                    {/* Description */}
+                    <td className="px-4 py-3.5 text-xs text-slate-300 max-w-xs">
+                      <p className="truncate line-clamp-1" title={p.description || ''}>
+                        {p.description || <span className="text-slate-500 italic">No description</span>}
+                      </p>
                     </td>
 
                     {/* Base Price */}
@@ -602,46 +597,17 @@ const PlayerManagement = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                Batting Style
-              </label>
-              <select
-                value={formData.battingStyle}
-                onChange={(e) => setFormData({ ...formData, battingStyle: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500"
-              >
-                <option value="Right-hand bat">Right-hand bat</option>
-                <option value="Left-hand bat">Left-hand bat</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                Bowling Style
-              </label>
-              <input
-                type="text"
-                value={formData.bowlingStyle}
-                onChange={(e) => setFormData({ ...formData, bowlingStyle: e.target.value })}
-                placeholder="e.g. Right-arm fast, Leg-break"
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                Previous Team
-              </label>
-              <input
-                type="text"
-                value={formData.previousTeam}
-                onChange={(e) => setFormData({ ...formData, previousTeam: e.target.value })}
-                placeholder="e.g. Mumbai Strikers"
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500"
-              />
-            </div>
+          <div>
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+              Previous Team / Former Franchise (Optional)
+            </label>
+            <input
+              type="text"
+              value={formData.previousTeam}
+              onChange={(e) => setFormData({ ...formData, previousTeam: e.target.value })}
+              placeholder="e.g. Previous Club, Warriors, Tigers"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500"
+            />
           </div>
 
           {/* Photo Upload and Preview */}
@@ -672,13 +638,13 @@ const PlayerManagement = () => {
 
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-              Description / Scouting Notes
+              Player Description
             </label>
             <textarea
-              rows={2}
+              rows={3}
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Career highlights, stats, recent match performance..."
+              placeholder="Player background, key achievements, strengths, tournament stats..."
               className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500"
             />
           </div>
@@ -710,7 +676,7 @@ const PlayerManagement = () => {
       >
         <form onSubmit={handleImportSubmit} className="space-y-4">
           <p className="text-xs text-slate-400 leading-relaxed">
-            Upload a spreadsheet (.xlsx or .csv) containing columns like <strong className="text-white">Name</strong>, <strong className="text-white">Category</strong>, <strong className="text-white">Age</strong>, <strong className="text-white">Base Price</strong>, <strong className="text-white">Batting Style</strong>, and <strong className="text-white">Bowling Style</strong>.
+            Upload a spreadsheet (.xlsx or .csv) containing columns like <strong className="text-white">Name</strong>, <strong className="text-white">Category</strong>, <strong className="text-white">Age</strong>, <strong className="text-white">Base Price</strong>, and <strong className="text-white">Description</strong>.
           </p>
 
           <div className="border-2 border-dashed border-slate-800 hover:border-amber-500/50 rounded-2xl p-8 text-center transition-colors">

@@ -152,7 +152,7 @@ const UnsoldPlayers = () => {
                   <th className="px-4 py-3.5 text-center">Serial #</th>
                   <th className="px-4 py-3.5">Player</th>
                   <th className="px-4 py-3.5">Category</th>
-                  <th className="px-4 py-3.5">Style</th>
+                  <th className="px-4 py-3.5">Description</th>
                   <th className="px-4 py-3.5 text-right">Base Price</th>
                   <th className="px-4 py-3.5 text-center">Auction Attempts</th>
                   <th className="px-4 py-3.5 text-right">Action</th>
@@ -178,7 +178,7 @@ const UnsoldPlayers = () => {
                         </div>
                         <div>
                           <p className="font-bold text-white text-sm">{p.name}</p>
-                          <p className="text-xs text-slate-400">{p.age} yrs • {p.battingStyle}</p>
+                          <p className="text-xs text-slate-400">Age: {p.age} yrs {p.previousTeam ? `• ${p.previousTeam}` : ''}</p>
                         </div>
                       </div>
                     </td>
@@ -189,9 +189,10 @@ const UnsoldPlayers = () => {
                       </span>
                     </td>
 
-                    <td className="px-4 py-3.5 text-xs text-slate-400">
-                      <div>{p.battingStyle}</div>
-                      <div className="text-[11px] text-slate-500">{p.bowlingStyle}</div>
+                    <td className="px-4 py-3.5 text-xs text-slate-300 max-w-xs">
+                      <p className="truncate line-clamp-1" title={p.description || ''}>
+                        {p.description || <span className="text-slate-500 italic">No description</span>}
+                      </p>
                     </td>
 
                     <td className="px-4 py-3.5 text-right font-mono font-semibold text-white">

@@ -7,7 +7,7 @@ const auctionSettingsSchema = new mongoose.Schema({
   },
   auctionTitle: {
     type: String,
-    default: 'Premier Cricket League Auction 2026'
+    default: 'Premier Sports League Auction 2026'
   },
   currencySymbol: {
     type: String,

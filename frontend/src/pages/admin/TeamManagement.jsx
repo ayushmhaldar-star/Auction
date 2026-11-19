@@ -461,8 +461,8 @@ const TeamManagement = () => {
                       <p className="font-bold text-white text-sm">
                         {player.name} <span className="text-xs text-slate-400">#{player.serialNumber}</span>
                       </p>
-                      <p className="text-xs text-slate-400">
-                        {player.category?.name || 'Player'} • {player.battingStyle}
+                      <p className="text-xs text-slate-400 truncate max-w-[200px] sm:max-w-xs">
+                        {player.category?.name || 'Player'} {player.description ? `• ${player.description}` : ''}
                       </p>
                     </div>
                   </div>

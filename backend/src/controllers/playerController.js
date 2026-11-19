@@ -159,8 +159,8 @@ exports.createPlayer = async (req, res) => {
       photo: photoUrl,
       age: Number(age),
       category,
-      battingStyle: battingStyle || 'Right-hand bat',
-      bowlingStyle: bowlingStyle || 'Right-arm medium',
+      battingStyle: battingStyle || '',
+      bowlingStyle: bowlingStyle || '',
       previousTeam: previousTeam || '',
       basePrice: Number(basePrice),
       description: description || ''
@@ -319,9 +319,9 @@ exports.importPlayers = async (req, res) => {
     // Fallback default category
     let defaultCatId = categories[0]?._id;
     if (!defaultCatId) {
-      const newCat = await Category.create({ name: 'All-Rounder', description: 'Default category' });
+      const newCat = await Category.create({ name: 'General', description: 'General category' });
       defaultCatId = newCat._id;
-      categoryMap.set('all-rounder', newCat._id);
+      categoryMap.set('general', newCat._id);
     }
 
     let nextSerial = await getNextSerialNumber();
@@ -348,8 +348,8 @@ exports.importPlayers = async (req, res) => {
 
       const age = Number(row['Age'] || row['age']) || 24;
       const basePrice = Number(row['Base Price'] || row['BasePrice'] || row['base_price']) || 100000;
-      const battingStyle = row['Batting Style'] || row['batting_style'] || 'Right-hand bat';
-      const bowlingStyle = row['Bowling Style'] || row['bowling_style'] || 'Right-arm medium';
+      const battingStyle = row['Batting Style'] || row['batting_style'] || '';
+      const bowlingStyle = row['Bowling Style'] || row['bowling_style'] || '';
       const previousTeam = row['Previous Team'] || row['previous_team'] || '';
       const description = row['Description'] || row['description'] || '';
 

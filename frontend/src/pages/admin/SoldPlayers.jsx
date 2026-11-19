@@ -100,7 +100,7 @@ const SoldPlayers = () => {
                         </div>
                         <div>
                           <p className="font-bold text-white text-sm">{p.name}</p>
-                          <p className="text-xs text-slate-400">{p.battingStyle} • {p.age} yrs</p>
+                          <p className="text-xs text-slate-400 truncate max-w-xs">{p.description || `Age: ${p.age} yrs`}</p>
                         </div>
                       </div>
                     </td>

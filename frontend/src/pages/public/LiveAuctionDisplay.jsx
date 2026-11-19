@@ -189,8 +189,8 @@ const LiveAuctionDisplay = () => {
       <main className="relative z-10 my-auto py-6">
         {!currentPlayer ? (
           <div className="max-w-2xl mx-auto p-12 text-center rounded-3xl bg-slate-900/60 border border-slate-800 backdrop-blur-xl shadow-2xl space-y-4">
-            <div className="w-24 h-24 rounded-3xl bg-slate-800 flex items-center justify-center text-4xl mx-auto shadow-inner text-slate-600">
-              🏏
+            <div className="w-24 h-24 rounded-3xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center mx-auto shadow-inner">
+              <Trophy className="w-12 h-12 text-amber-400/60" />
             </div>
             <h2 className="text-3xl font-black text-white uppercase tracking-wider">
               Waiting for Next Player
@@ -251,15 +251,15 @@ const LiveAuctionDisplay = () => {
                   </div>
                 </div>
 
-                {/* Attributes Grid */}
-                <div className="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-slate-800/80">
-                  <div className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 space-y-1">
-                    <span className="text-[11px] uppercase font-bold text-slate-500 tracking-wider">Batting Style</span>
-                    <p className="text-base font-extrabold text-white">{currentPlayer.battingStyle || 'Right-hand bat'}</p>
-                  </div>
-                  <div className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 space-y-1">
-                    <span className="text-[11px] uppercase font-bold text-slate-500 tracking-wider">Bowling Style</span>
-                    <p className="text-base font-extrabold text-white">{currentPlayer.bowlingStyle || 'Right-arm medium'}</p>
+                {/* Player Description / Bio */}
+                <div className="mt-8 pt-6 border-t border-slate-800/80">
+                  <div className="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 space-y-2">
+                    <span className="text-[11px] uppercase font-extrabold text-amber-400 tracking-wider">
+                      PLAYER DESCRIPTION
+                    </span>
+                    <p className="text-base text-slate-200 leading-relaxed font-medium">
+                      {currentPlayer.description || 'No description provided.'}
+                    </p>
                   </div>
                 </div>
               </div>

@@ -28,11 +28,11 @@ const playerSchema = new mongoose.Schema({
   },
   battingStyle: {
     type: String,
-    default: 'Right-hand bat'
+    default: ''
   },
   bowlingStyle: {
     type: String,
-    default: 'Right-arm medium'
+    default: ''
   },
   previousTeam: {
     type: String,

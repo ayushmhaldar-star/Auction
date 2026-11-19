@@ -343,8 +343,8 @@ const CategoryManagement = () => {
                     <p className="font-bold text-white text-sm">
                       {player.name} <span className="text-xs text-slate-400">#{player.serialNumber}</span>
                     </p>
-                    <p className="text-xs text-slate-400">
-                      {player.battingStyle} • {player.bowlingStyle}
+                    <p className="text-xs text-slate-400 truncate max-w-xs">
+                      {player.description || (player.previousTeam ? `Team: ${player.previousTeam}` : `Age: ${player.age}`)}
                     </p>
                   </div>
                 </div>

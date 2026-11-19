@@ -6,7 +6,7 @@ const SettingsContext = createContext();
 export const SettingsProvider = ({ children }) => {
   const [settings, setSettings] = useState({
     websiteTitle: 'AUCTION PRO',
-    auctionTitle: 'Premier Cricket League Auction 2026',
+    auctionTitle: 'Premier Sports League Auction 2026',
     currencySymbol: '₹',
     defaultBudget: 100000000,
     defaultIncrement: 500000,
